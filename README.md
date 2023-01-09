@@ -1,1 +1,1 @@
-# cs397-ludobots
+# cs396-ludobots
