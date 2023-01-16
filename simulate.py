@@ -5,6 +5,17 @@ import pyrosim.pyrosim as pyrosim
 import numpy as np
 import random
 
+b_amplitude = np.pi/2
+b_frequency = 7
+b_phaseOffset = np.pi
+
+f_amplitude = np.pi
+f_frequency = 2
+f_phaseOffset = np.pi/4
+
+# b_targetAngles = np.load("data/targetAngles.npy")
+# f_targetAngles = np.load("data/targetAngles.npy")
+
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0, 0, -9.8)
@@ -13,9 +24,15 @@ robotId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotId)
 
-ticks = 500
+ticks = 1000
 backLegSensorValues = np.zeros(ticks)
 frontLegSensorValues = np.zeros(ticks)
+# np.save("data/targetAngles.npy", np.sin(np.linspace(0, np.pi*2, ticks)*-np.pi/4))
+# np.save("data/targetAngles.npy", 
+	# np.sin(frequency*np.linspace(0, np.pi*2, ticks)+phaseOffset)*amplitude)
+
+b_targetAngles = np.sin(b_frequency*np.linspace(0, np.pi*2, ticks)+b_phaseOffset)*b_amplitude
+f_targetAngles = np.sin(f_frequency*np.linspace(0, np.pi*2, ticks)+f_phaseOffset)*f_amplitude
 
 for n in range(ticks):
 	p.stepSimulation()
@@ -26,7 +43,7 @@ for n in range(ticks):
 	bodyIndex = robotId,
 	jointName = b'Torso_BackLeg',
 	controlMode = p.POSITION_CONTROL,
-	targetPosition = np.pi/(4*(random.random()-0.5)),
+	targetPosition = b_targetAngles[n],
 	maxForce = 25
 	)
 
@@ -34,10 +51,9 @@ for n in range(ticks):
 	bodyIndex = robotId,
 	jointName = b'Torso_FrontLeg',
 	controlMode = p.POSITION_CONTROL,
-	targetPosition = np.pi/(4*(random.random()-0.5)),
+	targetPosition = f_targetAngles[n],
 	maxForce = 25
 	)
-	print(4*(random.random()-0.5))
 
 	time.sleep(1/60)
 	
