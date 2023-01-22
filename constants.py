@@ -1,6 +1,4 @@
-import numpy as np
-
-ticks = 1000
+ticks = 2500
 maxForce = 25
-
-numberOfGenerations = 20
+numberOfGenerations = 10
+populationSize = 10

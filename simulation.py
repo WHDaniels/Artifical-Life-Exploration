@@ -10,17 +10,20 @@ from robot import ROBOT
 import time
 
 class SIMULATION:
-	def __init__(self, directOrGUI):
+	def __init__(self, directOrGUI, solutionID):
 		self.directOrGUI = directOrGUI
+		self.solutionID = solutionID
+
 		if directOrGUI == 'DIRECT':
 			self.physicsClient = p.connect(p.DIRECT)
 		if directOrGUI == 'GUI':
 			self.physicsClient = p.connect(p.GUI)
+
 		p.setAdditionalSearchPath(pybullet_data.getDataPath())
 		p.setGravity(0, 0, -9.8)
 
 		self.world = WORLD()
-		self.robot = ROBOT()
+		self.robot = ROBOT(solutionID)
 
 	def run(self):
 		for n in range(c.ticks):
@@ -29,8 +32,8 @@ class SIMULATION:
 			self.robot.Think()
 			self.robot.Act(n)
 
-			if self.directOrGUI == 'GUI':
-				time.sleep(1e-5)
+			# if self.directOrGUI == 'GUI':
+			# 	time.sleep(1e-6)
 			# if n % 50 == 0:
 			# 	print(n)
 
