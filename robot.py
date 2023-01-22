@@ -36,10 +36,17 @@ class ROBOT:
 				# bytes hack :(
 				self.motors[bytes(jointName,'UTF-8')].Set_Value(self.robotId, desiredAngle)
 
-
 	def Think(self):
 		self.nn.Print()
 		self.nn.Update()
+
+	def Get_Fitness(self):
+		stateOfLinkZero = p.getLinkState(self.robotId, 0)
+		positionOfLinkZero = stateOfLinkZero[0]
+		xCoordinateOfLinkZero = positionOfLinkZero[0]
+		
+		with open('fitness.txt', 'w') as out_file:
+			out_file.write(str(xCoordinateOfLinkZero))
 
 
 		
