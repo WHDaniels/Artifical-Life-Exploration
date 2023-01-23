@@ -1,8 +1,8 @@
-ticks = 1000
+ticks = 10000
 maxForce = 25
-numberOfGenerations = 10
+numberOfGenerations = 50
 populationSize = 10
 
 numSensorNeurons = 5
 numMotorNeurons = 4
-motorJointRange = 0.2
+motorJointRange = 0.5

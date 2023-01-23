@@ -23,6 +23,7 @@ class SOLUTION:
 		fit_path = f'fitness{self.myID}.txt'
 		while not os.path.exists(fit_path):
 			time.sleep(0.01)
+		time.sleep(0.01)
 		with open(fit_path, 'r') as in_file:
 			self.fitness = float(in_file.readlines()[0])
 		os.system(f'del {fit_path}')
@@ -35,12 +36,12 @@ class SOLUTION:
 		self.myID = ID
 
 	def Create_World(self):
-		pyrosim.Start_SDF("world.sdf")
+		pyrosim.Start_SDF(f"world{self.myID}.sdf")
 		# pyrosim.Send_Cube(name="Box", pos=[x-3, y+3, z], size=[length, width, height])
 		pyrosim.End()
 
 	def Create_Body(self):
-		pyrosim.Start_URDF("body.urdf")
+		pyrosim.Start_URDF(f"body{self.myID}.urdf")
 
 		# Torso
 		pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1], size=[length, width, height])
