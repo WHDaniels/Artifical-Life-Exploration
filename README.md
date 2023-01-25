@@ -23,3 +23,10 @@ for the creature with random behaviour and
 python main.py train
 ```
 to train and display the evolved "hopper" creature.
+
+### Brief Visualizations
+Random:
+https://youtu.be/sDqdE_9GzQ8
+
+Evolved:
+https://youtu.be/41ceLS-wUsE
