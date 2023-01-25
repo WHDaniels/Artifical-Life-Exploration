@@ -32,8 +32,8 @@ class SIMULATION:
 			self.robot.Think()
 			self.robot.Act(n)
 
-			# if self.directOrGUI == 'GUI':
-			# 	time.sleep(1e-6)
+			if self.directOrGUI == 'GUI':
+				time.sleep(1e-3)
 			# if n % 50 == 0:
 			# 	print(n)
 
