@@ -1,4 +1,5 @@
 import os
+import random
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
 from pyrosim.neuralNetwork import NEURAL_NETWORK
@@ -12,10 +13,11 @@ class ROBOT:
 		self.solutionID = solutionID
 		self.motors = {}
 		self.heightList = []
-
 		self.robotId = p.loadURDF(f'body{solutionID}.urdf')
-		p.changeVisualShape(self.robotId, -1, rgbaColor=[1, 1, 1, 1])
 		self.nn = NEURAL_NETWORK(f'brain{solutionID}.nndf')
+
+		for link in range(-1, 20):
+			p.changeVisualShape(self.robotId, link, shapeType=2, rgbaColor=[0, 0, 1, 1])
 
 		pyrosim.Prepare_To_Simulate(self.robotId)
 		self.Prepare_To_Sense()
@@ -26,11 +28,14 @@ class ROBOT:
 
 	def Prepare_To_Sense(self):
 		self.sensors = {}
-		for n, linkName in enumerate(pyrosim.linkNamesToIndices):
-			self.sensors[linkName] = SENSOR(linkName)
 
-			# Change color of links
-			p.changeVisualShape(self.robotId, n, rgbaColor=[0.2, 0.2, 0.2, 1])
+		neuron_keys = list(self.nn.Get_Neuron_Names())
+
+		for linkName in pyrosim.linkNamesToIndices:
+			linkNum = linkName[4:]
+			if linkNum in neuron_keys and random.random() > 0.5:
+				self.sensors[linkName] = SENSOR(linkName)
+				p.changeVisualShape(self.robotId, int(linkNum), rgbaColor=[0, 1, 0, 1])
 
 	def SENSE(self, t):
 		for k, v in self.sensors.items():
@@ -52,20 +57,21 @@ class ROBOT:
 	def Think(self):
 		self.nn.Print()
 		self.nn.Update()
-		self.Track_Height()
+		# self.Track_Height()
 
 	def Track_Height(self):
 		basePosition, baseOrientation = p.getBasePositionAndOrientation(self.robotId)
 		zPosition = basePosition[2]
-		if zPosition >= 1.0:
+		if zPosition >= 0:
 			self.heightList.append(zPosition)
 
 	def Get_Fitness(self):
 		basePosition, baseOrientation = p.getBasePositionAndOrientation(self.robotId)
 		yPosition = basePosition[1]
 
-		avgHeight = sum(self.heightList)/len(self.heightList)
-		fitness = f'{yPosition-((avgHeight*2)**2)}'
+		# avgHeight = sum(self.heightList)/len(self.heightList)
+		# fitness = f'{yPosition-((avgHeight*2)**2)}'
+		fitness = f'{yPosition}'
 		with open(f'tmp{self.solutionID}.txt', 'w') as out_file:
 			out_file.write(fitness)
 		os.system(f'rename tmp{self.solutionID}.txt fitness{self.solutionID}.txt')
