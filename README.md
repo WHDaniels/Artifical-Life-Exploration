@@ -2,9 +2,6 @@
 
 ## For Assignment 6
 
-### Background
-This creature is constructed to be a creature that takes sutble hops to get as far as possible in the y direction.
-
 ### Running
 Clone repository and, assuming the requisite enviroment with pybullet installed, run
 ```
