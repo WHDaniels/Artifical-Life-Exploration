@@ -17,7 +17,7 @@ class ROBOT:
 		self.nn = NEURAL_NETWORK(f'brain{solutionID}.nndf')
 
 		for link in range(-1, 20):
-			p.changeVisualShape(self.robotId, link, shapeType=2, rgbaColor=[0, 0, 1, 1])
+			p.changeVisualShape(self.robotId, link, rgbaColor=[0, 0, 1, 1])
 
 		pyrosim.Prepare_To_Simulate(self.robotId)
 		self.Prepare_To_Sense()
