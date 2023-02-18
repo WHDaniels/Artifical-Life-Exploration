@@ -15,6 +15,12 @@ For more details, all linked code is substantially documented.
 ### What's the rundown?
 Most creatures appear as a link of 1 to 3 sizeable main body links with limb random protrusions. These limbs stem from a main body and only grow sequentially on top of each other, stemming from random locations. Limbs can be of two configurations: a short-short-long and a long-long-short config. This results in 1) stick-like and 2) wing/flapper-like limbs. The main parameters that affect diversity are the "baseLinks" solution attribute (number of main bodies) and the grow chance (chance that limbs will grow recursively).
 
+### Running
+Clone repository and, assuming the requisite enviroment with pybullet installed, run
+```
+python main.py random
+```
+
 ### Brief Visualization
 https://youtu.be/jhMVZn2n3mA
 
