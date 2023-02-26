@@ -1,12 +1,16 @@
 import numpy as np
 from matplotlib import pyplot as plt
+import pickle
 
-backLegSensorValues = np.load("data/backLegSensorValues.npy")
-frontLegSensorValues = np.load("data/frontLegSensorValues.npy")
-targetAngles = np.load("data/targetAngles.npy")
+fitnesses = []
+for num in range(5):
+    with open(f'best_fitnesses{num}.pkl', 'rb') as file:
+        fitnesses.append([pickle.load(file), f'Gen {num+1}'])
 
-# plt.plot(backLegSensorValues, label='back leg', linewidth=3)
-# plt.plot(frontLegSensorValues, label='front leg')
-plt.plot(targetAngles)
-# plt.legend()
+colors = ['b', 'r', 'k', 'm', 'c']
+for n, run in enumerate(fitnesses):
+    data = [abs(x) for x in run[0]]
+    plt.plot(data, label=run[1], color=colors[n], linewidth=3)
+
+plt.legend()
 plt.show()
