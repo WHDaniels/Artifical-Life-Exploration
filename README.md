@@ -20,6 +20,10 @@ Ancestor (first parent) encodings are generated as shown above, then further enc
 
 ![Mutation graph](./figures/diagram2.png)
 
+Here's an example of how we encode information into our creatures. This is the genetic information that is transfered and mutated over time.
+
+![Genetic information graph](./figures/diagram5.png)
+
 ### Creature brain structure
 All creature brains are fully connected. During slicing synapses are removed from removed links/joints, and during combining synapses are retained. Sometimes combining errors (mutations) can occur that prevent weights from being carried over, resulting in random weights.
 
@@ -62,3 +66,4 @@ https://youtu.be/ly3jJqFNsN0
 ### References
 [Education in Evolutionary Robotics](https://www.reddit.com/r/ludobots/)
 [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) is referenced for genotype graph inspiration.
+[Pyrosim](https://ccappelle.github.io/pyrosim/)
