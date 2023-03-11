@@ -29,7 +29,7 @@ A visualization of a fully connected brain given a random 4-link creature morpho
 
 ### The evolution paradigm
 
-A parallel hill climber is used to evolved creatures over time. An abstract visualization of the process is shown below.
+A parallel hill climber is used to evolve creatures over time. An abstract visualization of the process is shown below.
 
 ![Parallel hill climber](./figures/diagram4.png)
 
