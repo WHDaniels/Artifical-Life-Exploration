@@ -2,8 +2,10 @@
 
 ## Final Project (The Artist)
 
-### What's the rundown?
-The creatures in this project are evolved by piecing together "main body" links. Mutations can be: slicing mutations that cut the genome at some point, combination mutations that graft two sliced creatures together, and standard weight mutations that change weights in the creatures brain. A diverse set of ancestors are created, and over time these configurations are evolved by the above operations.
+### What is this?
+This project is centered around evolving virtual creatures made up of simulated blocks and neurons. We start by spawning unevolved creatures of a certain random configuration, then there creatures "learn" to complete a specified task automatically over time! Throughout this short blog we will walk through this evolution process and how we implement it.
+
+The creatures in this project are evolved by piecing together "main body" links. Mutations can be: slicing mutations that cut the genome at some point, combination mutations that graft two sliced creatures together, and standard weight mutations that change weights in the creatures brain. A diverse set of ancestors are created, and over time these configurations are evolved by the above mentioned operations.
 
 This setup is used as I wanted to enforce a catepillar-like evolution progression. The fitness function used minimizes 
 ```
