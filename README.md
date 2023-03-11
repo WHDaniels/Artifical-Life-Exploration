@@ -64,6 +64,6 @@ python main.py saved
 https://youtu.be/ly3jJqFNsN0
 
 ### References
-[Education in Evolutionary Robotics](https://www.reddit.com/r/ludobots/)
+[Education in Evolutionary Robotics](https://www.reddit.com/r/ludobots/) is used as the basis for the parallel hill climber and most of the codebase.
 [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) is referenced for genotype graph inspiration.
-[Pyrosim](https://ccappelle.github.io/pyrosim/)
+[Pyrosim](https://ccappelle.github.io/pyrosim/) is the foundational framework for body and brain simulation used by LudoBots.
