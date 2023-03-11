@@ -47,6 +47,9 @@ The solution.py file houses most of the inner workings of the mutation process. 
 
 For more details, all linked code is documented.
 
+### What happened?
+There doesn't seem to be a convergence in terms of body structure/length, but population fitness increases nonetheless.  Selection seem to be more focused on the neuronal level of the exsitings links responding "correctly" to sensory input. As seen in the below videos, creatures exhibit multiple different behaviours for moving in the negative y direction while keeping low in terms of the z axis. For example, in the brief 10 second visualization a creature can be seen crawling but another creature can be seen wiggling. The particular mutation paradimg here seems efficient for evolution.
+
 ### Running
 Clone repository and, assuming the requisite enviroment with pybullet installed, one can run one of two options:
 
