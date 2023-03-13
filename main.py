@@ -10,7 +10,7 @@ if __name__ == '__main__':
 	# np.random.seed(4)
 	# random.seed(4)
 
-	if switch == 'random' or switch == 'train':
+	if switch == 'random' or switch == 'train' or switch == 'saved':
 		phc = PARALLEL_HILL_CLIMBER(mode=switch)
 		phc.Evolve()
 		phc.Show_Best()

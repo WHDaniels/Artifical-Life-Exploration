@@ -13,6 +13,9 @@ class PARALLEL_HILL_CLIMBER:
         os.system('del world*.sdf')
         os.system('del tmp*.txt')
 
+        self.root = True
+        self.mode = mode
+
         if mode == 'train':
             self.start_type = 'DIRECT'
             self.populationSize = c.populationSize
@@ -21,6 +24,17 @@ class PARALLEL_HILL_CLIMBER:
             self.start_type = 'GUI'
             self.populationSize = 1
             self.numberOfGenerations = 1
+        elif mode == 'saved':
+            self.start_type = 'GUI'
+            self.populationSize = 1
+            self.numberOfGenerations = 1
+
+            rnd = random.randint(1, 5)
+            with open(f'saved/best_weights{rnd}.pkl', 'rb') as file:
+                self.weights = pickle.load(file)
+            with open(f'saved/best_body{rnd}.pkl', 'rb') as file:
+                self.body_encoding = pickle.load(file)
+            self.root = False
         else:
             print("Invalid mode argument.")
             exit(1)
@@ -30,7 +44,10 @@ class PARALLEL_HILL_CLIMBER:
         self.best_fitnesses = []
 
         for parent_key in range(self.populationSize):
-            self.parents[parent_key] = SOLUTION(self.nextAvailableID, root=True)
+            self.parents[parent_key] = SOLUTION(self.nextAvailableID, root=self.root)
+            if self.mode == 'saved':
+                self.parents[parent_key].weights = self.weights
+                self.parents[parent_key].body_encoding = self.body_encoding
             self.nextAvailableID += 1
 
     def Evolve(self):
@@ -82,6 +99,12 @@ class PARALLEL_HILL_CLIMBER:
         for k in self.parents:
             if self.parents[k].fitness > self.children[k].fitness:
                 self.parents[k] = self.children[k]
+            best = self.parents[k]
+        with open('saved/best_weights5.pkl', 'wb') as file:
+            pickle.dump(best.weights, file)
+        with open('saved/best_body5.pkl', 'wb') as file:
+            pickle.dump(best.body_encoding, file)
+
 
     def Print(self):
         current_fitnesses = []
