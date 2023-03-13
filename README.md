@@ -2,6 +2,9 @@
 
 ## Final Project (The Artist)
 
+### Short Teaser
+https://youtu.be/ly3jJqFNsN0
+
 ### What is this?
 This project is centered around evolving virtual creatures made up of simulated blocks and neurons. We start by spawning unevolved creatures of a certain random configuration, then there creatures "learn" to complete a specified task automatically over time! Throughout this short blog we will walk through this evolution process and how we implement it.
 
@@ -63,8 +66,8 @@ To run a creature from the saved body and brain data:
 python main.py saved
 ```
 
-### Brief Visualization
-https://youtu.be/ly3jJqFNsN0
+### 2 Minute Summary Video
+https://youtu.be/vo83FBTfpW4
 
 ### References
 [Education in Evolutionary Robotics](https://www.reddit.com/r/ludobots/) is used as the basis for the parallel hill climber and most of the codebase.
