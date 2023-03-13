@@ -5,6 +5,9 @@
 ### Short Teaser
 https://youtu.be/ly3jJqFNsN0
 
+### 2 Minute Summary Video
+https://youtu.be/vo83FBTfpW4
+
 ### What is this?
 This project is centered around evolving virtual creatures made up of simulated blocks and neurons. We start by spawning unevolved creatures of a certain random configuration, then there creatures "learn" to complete a specified task automatically over time! Throughout this short blog we will walk through this evolution process and how we implement it.
 
@@ -54,7 +57,12 @@ For more details, all linked code is documented.
 There doesn't seem to be a convergence in terms of body structure/length, but population fitness increases nonetheless.  Selection seem to be more focused on the neuronal level of the exsitings links responding "correctly" to sensory input. As seen in the below videos, creatures exhibit multiple different behaviours for moving in the negative y direction while keeping low in terms of the z axis. For example, in the brief 10 second visualization a creature can be seen crawling but another creature can be seen wiggling. The particular mutation paradimg here seems efficient for evolution.
 
 ### Running
-Clone repository and, assuming the requisite enviroment with pybullet installed, one can run one of two options:
+Clone repository and run:
+
+```
+pip install -r requirements.txt
+```
+
 
 To run a randomly generated creature:
 ```
@@ -65,9 +73,6 @@ To run a creature from the saved body and brain data:
 ```
 python main.py saved
 ```
-
-### 2 Minute Summary Video
-https://youtu.be/vo83FBTfpW4
 
 ### References
 [Education in Evolutionary Robotics](https://www.reddit.com/r/ludobots/) is used as the basis for the parallel hill climber and most of the codebase.
