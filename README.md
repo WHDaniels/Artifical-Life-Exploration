@@ -1,6 +1,4 @@
-# Computer Science 396: Artificial Life
-
-## Final Project (The Artist)
+# Artificial Life Exploration
 
 ### Short Teaser
 https://youtu.be/ly3jJqFNsN0
